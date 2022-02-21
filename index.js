@@ -17,7 +17,7 @@ const bot = new Aoijs.Bot({
         connectedBots: true, 
 sharding: true,
 shardAmount: 100,
-    token: "ODk2MzAzOTQ3MzExMTA0MDQx.YWFKGQ.kNg8u14DlAS4XNiP9cKeVH6TCkc", //paste your token here
+    token: "", //paste your token here
 
     prefix:['$getservervar[prefix]','$getglobaluservar[up]'], //change the prefix in line 270
   mobile: false,
