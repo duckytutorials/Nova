@@ -1,5 +1,6 @@
 module.exports = ({
 name:"lmsg",
+$if: "v4",
 aliases:"level-message",
 category:"Levelling",
 usage:"lmsg add/remove <role> <message>",

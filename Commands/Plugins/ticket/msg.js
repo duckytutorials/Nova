@@ -1,6 +1,7 @@
 module.exports = [{
     name:"msg",
     type:"awaitedCommand",
+    $if: "v4",
     code:`$if[$getservervar[tmid]==a]
     $setservervar[tmid;$splittext[1]/]
     $else
@@ -11,6 +12,6 @@ module.exports = [{
     $awaitmessages[$authorid;1m;everything;category;Time out!]
     $setservervar[tm;]
     $setservervar[tc;]
-    $textsplit[$channelsendmessage[$getservervar[tc];{title:Tickets}{description:$getservervar[tm]}{footer:React with 🎫 to create a ticket!}{color:YELLOW}{reactions:🎫};yes]; ]
+    $textsplit[$channelsendmessage[$getservervar[tc];{newEmbed:{title:Tickets}{description:$getservervar[tm]}{footer:React with 🎫 to create a ticket!}{color:YELLOW}{reactions:🎫}};yes]; ]
     $onlyif[$channelexists[$findchannel[$message[1]]]==true;Could not find the channel!]`}]
     

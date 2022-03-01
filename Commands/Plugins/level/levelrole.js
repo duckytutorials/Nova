@@ -1,6 +1,7 @@
 	
 module.exports = ({
 name:"lrole",
+$if: "v4",
 aliases:"level-role",
 category:"Levelling",
 usage:"lrole add/remove <level> <role>",

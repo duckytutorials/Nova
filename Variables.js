@@ -1,4 +1,4 @@
-module.exports = ({
+module.exports = {
   userav: "0",
   //music 
    file: "server.js", //For reboot and stats//
@@ -695,4 +695,4 @@ module.exports = ({
  goldenpick: "<:golden_pickaxe:914023858170892319>",
  dimondpickaxe: "<:diamond_pickaxe:914023807839248405>",
  Hearts_left: "<:heart:914372501642051616>",
- });
+ }

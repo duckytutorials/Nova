@@ -1,5 +1,6 @@
 module.exports = {
 name: "banalt",
+$if: "v4",
 aliases: ['balt' , 'bana'],
 code:`
 $if[$creationdate[$mentioned[1];time]>30]

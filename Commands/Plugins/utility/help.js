@@ -1,7 +1,7 @@
 module.exports = [{
     name: "help",
-    code: `$title[Nova Help]
-$description[<:moderation:905787390302490624>  \`\`\>help-mod\`\`\  _ _ _ _ _ _ _ _ _ _ 
+    code: `$title[1;Nova Help]
+$description[1;<:moderation:905787390302490624>  \`\`\>help-mod\`\`\  _ _ _ _ _ _ _ _ _ _ 
 <:ticket:912634005470457856>  \`\`\>help-ticket\`\`\
 
 <:leveling:896951309809365024>  \`\`\>help-leveling\`\`\
@@ -28,5 +28,5 @@ $description[<:moderation:905787390302490624>  \`\`\>help-mod\`\`\  _ _ _ _ _ _ 
 > Others
 > [Hosting](https://discord.gg/P3BQAyc8yY) 
 > [Support server](https://discord.gg/BASBGn7Gwh)]
-$color[#2f3136]`
+$color[1;#2f3136]`
 }]

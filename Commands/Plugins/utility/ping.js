@@ -3,8 +3,8 @@ module.exports = {
     description: "Shows bot Ping",
     category: "General Commands",
     usage: `$getServerVar[prefix]ping`,
-    code: ` $color[RANDOM]
-$description[
+    code: ` $color[1;RANDOM]
+$description[1;
   Websocket Ping   : $numberSeparator[$ping]ms
   API       Ping   : $numberSeparator[$botPing]ms
   Database  Ping   : $numberSeparator[$dbPing]ms

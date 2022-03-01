@@ -13,9 +13,9 @@
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
     "amethyste-api": "^1.1.5",
-    "aoi.js": "^4.5.0",
+    "aoi.js": "^5.1.0",
     "aoi.js-panel": "^1.4.1",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.2",
     "canvacord": "5.2.1",
     "cookie-parser": "^1.4.6",
     "dbd.db": "1.4.5",
@@ -31,7 +31,7 @@
     "dotenv": "^10.0.0",
     "editor": "^1.0.0",
     "env": "0.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.4.0",
     "g-i-s": "^2.1.6",
@@ -62,5 +62,17 @@
     "yt-search": "^2.7.6",
     "ytdl-core": "^4.9.1"
   },
-  "description": ""
+  "description": "The best 100 command bot!",
+  "devDependencies": {
+    "node": "^16.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nova-develoment-team/Nova.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Nova-develoment-team/Nova/issues"
+  },
+  "homepage": "https://github.com/Nova-develoment-team/Nova#readme"
 }

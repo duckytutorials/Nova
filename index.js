@@ -28,12 +28,16 @@ applicationCache: true,
 intents: "all"
 })
 
-require('./Commands/Plugins/AdminPanel/dashboard.js')(bot, 4253, './Commands/Plugins/', 'NovaPass', '7122011')
+const aoidash = require('aoi.js-panel')
+const dash = new aoidash.Dash({
+port: 5130,
+bot: bot,
+command: './Commands/Plugins', //your command handler
+username: "NovaPass", //username to login to dashboard
+password: "7122011" //password to login to dashboard
+})
+dash.start()
 
-
-const disbut = require('discord-buttons') 
-disbut(bot.client)
-//Allows to execute Command
 
 
 const fetch = require('node-fetch');
@@ -41,11 +45,10 @@ const fetch = require('node-fetch');
 
 
 bot.variables(require('./Variables.js'))
-
 bot.loadCommands(`./Commands/Plugins`)
 
 bot.onMessage({
-  guildOnly: false,
+  guildOnly: false,//Uhhh... I don't recommend you to set it to "false", it would mess up if people will use the command on DM 
 
 respondToBots:false// commands will work in dms. set "true" for commands to work in guilds only
 });
@@ -98,6 +101,7 @@ $setUserVar[msg;0]
 })
 bot.awaitedCommand({
     name: "guess",
+    $if: "v4",
     code: `
 $if[$message[1]==$getUserVar[guess]]
 Haha nice! You guessed it.
@@ -118,6 +122,7 @@ $endIf
 })
 bot.awaitedCommand({
     name: "guess2",
+    $if: "v4",
     code: `
 $if[$message[1]==$getUserVar[guess]]
 Haha nice! You guessed it.
@@ -140,6 +145,7 @@ $endIf
 })
 bot.awaitedCommand({
     name: "guess3",
+    $if: "v4",
     code: `
 $if[$message[1]==$getUserVar[guess]]
 Haha nice! You guessed it
@@ -162,6 +168,7 @@ $endIf
 })
 bot.awaitedCommand({
     name: "guess4",
+    $if: "v4",
     code: `
 $if[$message[1]==$getUserVar[guess]]
 Haha nice! You guessed it
@@ -192,10 +199,10 @@ bot.joinCommand({
   channel: "$getServerVar[verifchannel]",
   code: `
   <@$authorID>
-  $title[:white_check_mark:VERIFICATION]
-  $description[Verify Your Self To Access This Server
+  $title[1;✅VERIFICATION]
+  $description[1;Verify Your Self To Access This Server
   With Send **$getUserVar[code]** At This Channel]
-  $image[https://textoverimage.moesif.com/image?image_url=https%3A%2F%2Fi.imgur.com%2FOrxlL0R.jpg&text=$getUserVar[code]&text_size=128&y_align=middle&x_align=center]
+  $image[1;https://textoverimage.moesif.com/image?image_url=https%3A%2F%2Fi.imgur.com%2FOrxlL0R.jpg&text=$getUserVar[code]&text_size=128&y_align=middle&x_align=center]
   $setUserVar[code;$randomString[5]]
   $onlyIf[$getServerVar[verify]oN;]
   `})
@@ -223,8 +230,8 @@ bot.joinCommand({
    bot.command({
     name: "ticket",
     code: `
-   $newTicket[ticket-$username[$authorID];{title:Ticket opened!}{description:Hello, <@$authorID>. Here is your ticket!:tickets: Please give the information about your problem or feedback. 
-   Thanks in advance for being patient}{footer:Use close to close your ticket};$getServerVar[ticketchannel];no;<@$authorID>, I failed to create your ticket! Try again]
+   $newTicket[ticket-$username[$authorID];{newEmbed:{title:Ticket opened!}{description:Hello, <@$authorID>. Here is your ticket!:tickets: Please give the information about your problem or feedback. 
+   Thanks in advance for being patient}{footer:Use close to close your ticket}};$getServerVar[ticketchannel];no;<@$authorID>, I failed to create your ticket! Try again]
    $sendMessage[Ticket Successfully opened! Hello, <@$authorID>. Go to **$toLowercase[#$username$discriminator]** to describe your issue!;Something went wrong]
  $deleteCommand`
    })
@@ -239,7 +246,7 @@ bot.joinCommand({
    
 bot.command({
 name:"giveaway",
-code:`$editmessage[$get[e];{author:🎉 GIVEAWAY (ENDED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}]
+code:`$editmessage[$get[e];{newEmbed:{author:🎉 GIVEAWAY (ENDED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}}]
 $sendmessage[Congratulations <@$get[winner]>! You won **$get[prize]**;no]
 $onlyif[$getmessagevar[ended]==false;]
 $onlyif[$get[winner]!=;No winner decided due to lack of participation]
@@ -262,7 +269,7 @@ bot.onInteractionCreate()
 bot.interactionCommand({
 name:"join",
 prototype:"button",
-code:`$editmessage[$get[msg];{author:🎉 GIVEAWAY 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$get[host]>\n**Nº Winners:** 1\n**Ends** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users have participated in this giveaway.}{footer:Ends at:}{timestamp:$get[endstamp]}{color:BLUE}]
+code:`$editmessage[$get[msg];{newEmbed:{author:🎉 GIVEAWAY 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$get[host]>\n**Nº Winners:** 1\n**Ends** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users have participated in this giveaway.}{footer:Ends at:}{timestamp:$get[endstamp]}{color:BLUE}}]
 $setmessagevar[joinedusers;$getmessagevar[joinedusers;$get[msg]]$authorid@;$get[msg]]
 $setmessagevar[joined;$get[participated];$get[msg]]
 $onlyif[$get[condition]==false;]
@@ -277,7 +284,7 @@ $let[msg;$interactiondata[message.id]]`})
 bot.interactionCommand({
 name:"reroll",
 prototype:"button",
-code:`$editmessage[$get[e];{author:🎉 GIVEAWAY (REROLLED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner After Reroll:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}]
+code:`$editmessage[$get[e];{newEmbed:{author:🎉 GIVEAWAY (REROLLED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner After Reroll:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}}]
 $sendmessage[Congratulations <@$get[winner]>! You won the reroll of **$get[prize]**;no]
 $onlyif[$get[winner]!=;No winner decided due to lack of participation]
 $setmessagevar[ended;true;$get[e]]
@@ -298,7 +305,7 @@ $let[msg;$interactiondata[message.id]]`})
 bot.interactionCommand({
 name:"end",
 prototype:"button",
-code:`$editmessage[$get[e];{author:🎉 GIVEAWAY (FORCE ENDED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner After Force End:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}]
+code:`$editmessage[$get[e];{newEmbed:{author:🎉 GIVEAWAY (FORCE ENDED) 🎉:}{thumbnail:$servericon}{title:$get[prize]}{description:**Hosted By#COLON#** <@$authorid>\n**Winner After Force End:** <@$get[winner]>\n**Ended** <t:$truncate[$divide[$get[endstamp];1000]]:R>\n\n**$get[participated]** Users had joined this giveaway}{footer:Ended at:}{timestamp:$get[endstamp]}{color:BLUE}}]
 $sendmessage[Congratulations <@$get[winner]>! You won the giveaway(force ended) of **$get[prize]**;no]
 $onlyif[$get[winner]!=;No winner decided due to lack of participation]
 $setmessagevar[ended;true;$get[e]]
@@ -338,7 +345,7 @@ the description will say "A cool slash command for AOIjs"
 bot.reactionAddCommand({
   channel:"$channelid",
   code:`$setchannelvar[to;$authorid;$splittext[1]]
-  $textsplit[$newticket[ticket-$username-$discriminator;<@$authorid> {title:Welcome to your ticket, $username!}{description:$advancedtextsplit[$getservervar[tmm];/;$findtextsplitindex[$messageid]]}{color:FFFF}{footer:$username[$clientid] tickets | Created with ❤️:$useravatar[$clientid]}{thumbnail:$authoravatar}{author:$usertag:$replacetext[$replacetext[$checkcondition[$servericon==];true;];false;$servericon]};$advancedtextsplit[$getservervar[tmc];/;$findtextsplitindex[$messageid]];yes;]; ]
+  $textsplit[$newticket[ticket-$username-$discriminator;<@$authorid> {newEmbed:{title:Welcome to your ticket, $username!}{description:$advancedtextsplit[$getservervar[tmm];/;$findtextsplitindex[$messageid]]}{color:FFFF}{footer:$username[$clientid] tickets | Created with ❤️:$useravatar[$clientid]}{thumbnail:$authoravatar}{author:$usertag:$replacetext[$replacetext[$checkcondition[$servericon==];true;];false;$servericon]}};$advancedtextsplit[$getservervar[tmc];/;$findtextsplitindex[$messageid]];yes;]; ]
   $clearreactions[$channelid;$messageid;$authorid;$emojitostring]
   $onlyif[$findtextsplitindex[$messageid]!=0;]
   $onlyif[$isbot==false;]
@@ -374,7 +381,7 @@ $suppressErrors`
 
 bot.command({
 name: "antilink",
-code: `$let[e;$apiMessage[;{author:$username[$authorID]#$discriminator[$authorID]:$authorAvatar::}{description:✅ -> \`Enable\`\n\n⛔ -> \`Disable\`\n**Antilink status:** $replaceText[$replaceText[$getServerVar[antilink];true;Enabled];false;Disabled]}{timestamp:ms}{color:#5865F2};{actionRow:Enable,2,1,EnableButton,✅|0|false:Disable,2,1,DisableButton,⛔|0|false};;yes]]
+code: `$let[e;$apiMessage[;{newEmbed:{author:$username[$authorID]#$discriminator[$authorID]:$authorAvatar::}{description:✅ -> \`Enable\`\n\n⛔ -> \`Disable\`\n**Antilink status:** $replaceText[$replaceText[$getServerVar[antilink];true;Enabled];false;Disabled]}{timestamp:ms}{color:#5865F2}};{actionRow:Enable,2,1,EnableButton,✅|0|false:Disable,2,1,DisableButton,⛔|0|false};;yes]]
 $onlyPerms[admin;Missing permission:\`admin\`]
 $onlyBotPerms[admin;Missing permission:\`admin\`]`
 })
@@ -383,7 +390,7 @@ bot.interactionCommand({
  name: "EnableButton",
  prototype:"button",
  code:`$setServerVar[antilink;true]
-$interactionReply[;{title:✅ Done}{description:Antilink successfully enabled!}{color:#7BDE3D};;0;7]
+$interactionReply[;{newEmbed:{title:✅ Done}{description:Antilink successfully enabled!}{color:#7BDE3D}};;0;7]
 $onlyIf[$getServerVar[antilink]==false;$interactionReply[Antilink already enabled!;;;0;4]`
 })
  
@@ -411,10 +418,10 @@ $onlyIf[$hasAnyPerm[admin;manageserver;managechannels;manageroles]==false;]
 
 bot.command({
 name: "removerole",
-code: `$color[RANDOM]
-$takeRoles[$mentioned[1];$mentionedRoles[1]]
-$title[Removed role to $username[$mentioned[1;yes]]#$discriminator[$mentioned[1;yes]]]
-$description[**$username** has taken <@&$mentionedRoles[1]> **role to** $username[$mentioned[1;yes]]]
+code: `$color[1;RANDOM]
+$takeRoles[1;$mentioned[1];$mentionedRoles[1]]
+$title[1;Removed role to $username[$mentioned[1;yes]]#$discriminator[$mentioned[1;yes]]]
+$description[1;**$username** has taken <@&$mentionedRoles[1]> **role to** $username[$mentioned[1;yes]]]
 $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1;yes]]];**⛔ That user is higher than me on role position**]
 $onlyIf[$rolePosition[$highestRole[$authorID]]<$rolePosition[$highestRole[$mentioned[1;yes]]];**⛔ That user is higher/equal than you on role position**]
 $onlyIf[$mentionedRoles[1]!=;⛔ **Mention a role**]
@@ -426,10 +433,10 @@ $onlyPerms[manageroles;⛔ **You don't have** \`MANAGAGE_ROLES\` perms]`
 bot.command({
 name: "giverole",
 aliases: ['role' , 'grole'],
-code: `$color[RANDOM]
-$giveRoles[$mentioned[1];$mentionedRoles[1]]
-$title[Role given to $username[$mentioned[1;yes]]#$discriminator[$mentioned[1;yes]]]
-$description[**$username** has given <@&$mentionedRoles[1]> **role to** $username[$mentioned[1;yes]]]
+code: `$color[1;RANDOM]
+$giveRoles[1;$mentioned[1];$mentionedRoles[1]]
+$title[1;Role given to $username[$mentioned[1;yes]]#$discriminator[$mentioned[1;yes]]]
+$description[1;**$username** has given <@&$mentionedRoles[1]> **role to** $username[$mentioned[1;yes]]]
 $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1;yes]]];**⛔ That user is higher than me on role position**]
 $onlyIf[$rolePosition[$highestRole[$authorID]]<$rolePosition[$highestRole[$mentioned[1;yes]]];**⛔ That user is higher/equal than you on role position**]
 $onlyIf[$mentionedRoles[1]!=;⛔ **Mention a role**]
@@ -442,11 +449,11 @@ bot.command({
   name: "temprole",
   code: `
 $channelSendMessage[$channelID;<@$mentioned[1]>, I removed the $roleName[$findRole[$message[2]]] role, time's up]
-$takeRoles[$mentioned[1];$findRole[$message[2]]]
+$takeRoles[1;$mentioned[1];$findRole[$message[2]]]
 $wait[$replaceText[$replaceText[$checkCondition[$message[3]==];true;24d];false;$message[3]]]
-$channelSendMessage[$channelID;{description::white_check_mark: | $username[$mentioned[1]]#$discriminator[$mentioned[1]] has been given the $roleName[$findRole[$message[2]]] role. For \`$replaceText[$replaceText[$checkCondition[$message[3]==];true;undefined time];false;$message[3]]\`}{color:RANDOM}]
+$channelSendMessage[$channelID;{newEmbed:{description:✅ | $username[$mentioned[1]]#$discriminator[$mentioned[1]] has been given the $roleName[$findRole[$message[2]]] role. For \`$replaceText[$replaceText[$checkCondition[$message[3]==];true;undefined time];false;$message[3]]\`}{color:RANDOM}}]
 $giveRoles[$mentioned[1];$findRole[$message[2]]]
-$suppressErrors[{title:An error occured}{description:Looks like I can't find the role}{color:RED}]
+$suppressErrors[{newEmbed:{title:An error occured}{description:Looks like I can't find the role}{color:RED}}]
 $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1]]];That user is higher than me on role position]
 $onlyIf[$rolePosition[$highestRole[$authorID]]<$rolePosition[$highestRole[$mentioned[1]]];That user is higher than you on role position.]
 $argsCheck[>3;Incorrect arguments. Example: temprole @user @role]

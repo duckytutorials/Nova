@@ -2,8 +2,8 @@ module.exports = ({
 name: "help-mod",
 aliases: ['help mod'],
 usage: ">help mod",
-code: `$title[<:moderation:905787390302490624> Nova moderation]
-$description[ban ¦ Ban a user.
+code: `$title[1;<:moderation:905787390302490624> Nova moderation]
+$description[1;ban ¦ Ban a user.
 banalt ¦ Bans a account if younger than 30d.
 kick ¦ Kick a user.
 setmute ¦ Set the muterole.
@@ -20,5 +20,5 @@ removerole ¦ Remove a user's role.
 temprole ¦ give a user a temp role
 Lock ¦  lock a channel
 Unlock ¦ unlock a channel]
-$color[738adb]`
+$color[1;738adb]`
 })

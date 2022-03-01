@@ -1,5 +1,6 @@
 module.exports = [{
     name:"rmodify",
+    $if: "v4",
     type:"awaitedCommand",
     code:`$if[$roleexists[$findrole[$message]]==true]
     $modifychannelperms[$channelid;-sendmessages;$findrole[$message]]

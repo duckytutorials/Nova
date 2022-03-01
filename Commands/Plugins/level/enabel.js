@@ -1,5 +1,6 @@
 module.exports = ({
 name:"set-level-channel",
+$if: "v4",
 aliases:"levelling",
 usage:"set-levelling (reset/<optional channel> <optional message>)",
 description:"Set your levelling. If no message is specified, the original message is sent.",

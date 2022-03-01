@@ -1,7 +1,8 @@
 module.exports = [{
     name:"amodify",
-    type:"awaitedCommand",
-    code:`$if[$roleexists[$findrole[$message]]==true]
+  $if: "v4",    
+  type:"awaitedCommand",
+  code:`$if[$roleexists[$findrole[$message]]==true]
     $modifychannelperms[$channelid;+sendmessages;$findrole[$message]]
     $modifychannelperms[$channelid;+readmessages;$findrole[$message]]
     Gave access to the role!

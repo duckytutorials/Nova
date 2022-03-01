@@ -1,8 +1,8 @@
 module.exports = ({
 name: "help-music",
 code: `
-$title[🎵 Nova music]
-$description[play ¦ Play a song.
+$title[1;🎵 Nova music]
+$description[1;play ¦ Play a song.
 playskip  ¦ skip the playing song
 pause ¦ pause
 resume ¦ resume a song
@@ -27,5 +27,6 @@ musicsettings ¦ musicsettings
 playlist ¦ Shows your playlist
 playlist-add ¦ add a song to your playlist
 playlist-remove ¦ remove a song from your playlist
-playlist-play ¦ play something from your playlist]`
+playlist-play ¦ play something from your playlist]
+$color[1;RED]`
 })

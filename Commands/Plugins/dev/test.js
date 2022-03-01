@@ -14,12 +14,12 @@ $editMessage[$getUserVar[testid1];troll]
 }, {
     name: "test2",
     code: `
-$description[Hello\n\nHi]
+$description[1;Hello\n\nHi]
 `,
 }, {
     name: "test3",
     code: `
-$description[[hi](https://discordapp.com/oauth2/authorize?client_id=$message[1]&scope=bot&permissions=0)]
+$description[1;[hi](https://discordapp.com/oauth2/authorize?client_id=$message[1]&scope=bot&permissions=0)]
 `,
 }, {
     name: "test4",
@@ -39,7 +39,7 @@ $setUserVar[userav;$findMembers[$message;10;{id}]]
     type: "awaitedCommand",
     name: "test5",
     code: `
-$image[attachment://cutie-pie.jpg]
+$image[1;attachment://cutie-pie.jpg]
 $attachment[$userAvatar[$splitText[$message[1]]?size=2048]]
 $textSplit[$getUserVar[userav];\n]
 $suppressErrors[owo]
@@ -162,7 +162,7 @@ $let[id;$apiMessage[$channelID;ok press ze button now;;{actionRow:,2,3,yes,$getV
 }, {
     name: "test13",
     code: `
-$apiMessage[;{author:$userTag:$authorAvatar:}{image:https://cdn.discordapp.com/emojis/$advancedTextSplit[$getVar[yes];:;3;>;1].png}{color:#3198DB};{actionRow:,2,3,owo,$getVar[byes],true};;no]
+$apiMessage[;{newEmbed:{author:$userTag:$authorAvatar:}{image:https://cdn.discordapp.com/emojis/$advancedTextSplit[$getVar[yes];:;3;>;1].png}{color:#3198DB};{actionRow:,2,3,owo,$getVar[byes],true}};;no]
 `,
 }, {
     name: "test14",
