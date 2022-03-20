@@ -10,19 +10,7 @@
 
 > including:
 
-> Music
-
-> Leveling
-
-> Mod
-
-> Antiswear
-
-> utility
-
-> Ticket
-
-> Fun
+> Music,Leveling,Mod,Antiswear,utility,Ticket,Fun
 
 
 It has special features such as
