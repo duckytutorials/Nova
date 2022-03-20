@@ -28,7 +28,7 @@ applicationCache: true,
 intents: "all"
 })
 
-require('./Commands/Plugins/AdminPanel/dashboard.js')(bot, 4253, './Commands/Plugins/', 'NovaPass', '7122011')
+require('./Commands/Plugins/AdminPanel/dashboard.js')(bot, server port, './Commands/Plugins/', 'user', 'pass')
 
 
 const disbut = require('discord-buttons') 
