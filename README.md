@@ -6,4 +6,6 @@
 
 
 # Nova
- The best 100 command bot!
+Nova a bot with 100+ commands
+
+including
