@@ -33,8 +33,8 @@ const dash = new aoidash.Dash({
 port: 5130,
 bot: bot,
 command: './Commands/Plugins', //your command handler
-username: "NovaPass", //username to login to dashboard
-password: "7122011" //password to login to dashboard
+username: "", //username to login to dashboard
+password: "" //password to login to dashboard
 })
 dash.start()
 
