@@ -6,15 +6,24 @@
 
 
 # Nova
-Nova a bot with 100+ commands
-including:
-Music
-Leveling
-Mod
-Antiswear
-utility
-Ticket
-Fun
+> Nova a bot with 100+ commands
+
+> including:
+
+> Music
+
+> Leveling
+
+> Mod
+
+> Antiswear
+
+> utility
+
+> Ticket
+
+> Fun
+
 
 It has special features such as
 a built in website and aa adminPanel
