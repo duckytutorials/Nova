@@ -1,7 +1,7 @@
 module.exports = ({
   userav: "0",
   //music 
-   file: "server.js", //For reboot and stats//
+   file: "index.js", //For reboot and stats//
    database: "./database/main/main_scheme_1.sql", //For stats//
  
    pause: "⏸️ Paused.",
@@ -85,13 +85,13 @@ module.exports = ({
  bno: "guilded_image_3833dadf524f7034bf|890299986695307374|false",
  warn: "0",
  mute: "",
- levelling:"true",
+ levelling: "false",
    level_msg:"{user.mention}, you just levelled up to {level}!",
    level_channel:"",
    level_roles:"",
    level_order:"",
    exp:"0",
-   level_card:"https://images-ext-2.discordapp.net/external/0Xv4kCUKHD1-XuITg1pfJKpexx0WNSDycImJsgMyMZg/%3Fwidth%3D473%26height%3D473/https/media.discordapp.net/attachments/901046126671691816/901047335671459881/Photo_1633692466619.jpg",
+   level_card:"https://cdn.nova-bot.tk/5ynk5an5.jpg",
    level_msges:"",
    level_morder:"",
    req:"100",
@@ -695,4 +695,5 @@ module.exports = ({
  goldenpick: "<:golden_pickaxe:914023858170892319>",
  dimondpickaxe: "<:diamond_pickaxe:914023807839248405>",
  Hearts_left: "<:heart:914372501642051616>",
+ antiSwear: "false",
  });

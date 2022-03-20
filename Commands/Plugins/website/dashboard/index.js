@@ -1,12 +1,19 @@
+const express = require('express');
+const path = require('path')
+const app = express();
 module.exports = function(bot,port,command,user,pass) {
     
     const path = require('path')
     const fs = require('fs')
+   
     
     bot = bot.client
     const express = require('express')
     const app = new express()
-    
+        router = express.Router();
+     app.use(router);
+    app.use('/assets', express.static(path.join(__dirname, 'assets')))
+
     
     const bodyParser = require("body-parser")
     app.use(bodyParser.urlencoded({extended : true}));
@@ -103,7 +110,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -177,7 +184,7 @@ window.onload = function () {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -242,7 +249,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -273,13 +280,13 @@ function myFunction() {
     })
     
     
-    app.get('/', login, function(req,res) {
+    app.get('/dash', login, function(req,res) {
 
         res.send(`
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD LOGIN</title>
+<title>dashboard LOGIN</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -374,7 +381,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -429,7 +436,7 @@ function myFunction() {
         if(username==user && password==pass) {
             req.session.user = username
             req.session.pass = password
-            res.redirect('/dash')
+            res.redirect('/admin')
             }
         else{
        res.redirect('/')
@@ -441,7 +448,7 @@ function myFunction() {
     
     
     
-    app.get('/dash', islogin, async(req,res) => {
+    app.get('/admin', islogin, async(req,res) => {
     
     let user = await bot.users.fetch('694184230271451166')
      let author = user.username + "#" + user.discriminator
@@ -451,7 +458,7 @@ function myFunction() {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -564,7 +571,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -633,7 +640,7 @@ ${rr}</button></a></li>`*/
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD COMMAND</title>
+<title>dashboard COMMAND</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -731,7 +738,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -809,7 +816,7 @@ ${server[i].name}</button></a></li>`*/
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD GUILD</title>
+<title>dashboard GUILD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -876,7 +883,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -1008,7 +1015,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -1125,7 +1132,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -1189,7 +1196,7 @@ window.onload = function () {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1254,7 +1261,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -1299,7 +1306,7 @@ function myFunction() {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1364,7 +1371,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -1405,7 +1412,7 @@ function myFunction() {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1470,7 +1477,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -1503,113 +1510,14 @@ function myFunction() {
     
     
     
- app.get('/404beta', islogin ,function (req,res,next) {
-        res.status(404)
-       res.send(`
-<!DOCTYPE html>
-<html>
-<head>
-<title>DASHBOARD</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-              background-color: #001f3f;
-                color: #F5F5F5;
-                    }
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
 
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-</style>
-</head>
-<body>
-
-<div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
-  <a href="/command">Command</a>
-  <a href="/guild">Guild</a>
-  <a href="/shell">Shell</a>
-  <a href="/djseval">DjsEval</a>
-  <a href="/aoieval">AoiEval</a> <a href="/stats">BotStats</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-
-404 Not Found
-
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
-
-</body>
-</html>
-`) 
-
-        })
     
     app.get('/shell', islogin, async(req, res) => {
       res.send(`
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1674,7 +1582,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -1722,7 +1630,7 @@ function myFunction() {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1787,7 +1695,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -1837,7 +1745,7 @@ function myFunction() {
 
   href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -1902,7 +1810,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -1977,7 +1885,7 @@ window.onload = function () {
 
   href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -2042,7 +1950,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -2103,7 +2011,7 @@ window.onload = function () {
 
   href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -2168,7 +2076,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a>
@@ -2255,7 +2163,7 @@ window.onload = function () {
 
   href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -2320,7 +2228,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -2369,7 +2277,7 @@ window.onload = function () {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -2434,7 +2342,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -2502,7 +2410,7 @@ const final = process.cpuUsage(initial);
 <!DOCTYPE html>
 <html>
 <head>
-<title>DASHBOARD</title>
+<title>dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -2567,7 +2475,7 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="/dash" class="active">Dashboard</a>
+  <a href="/admin" class="active">dashboard</a>
   <a href="/command">Command</a>
   <a href="/guild">Guild</a>
   <a href="/shell">Shell</a> 
@@ -2625,10 +2533,34 @@ function myFunction() {
             return next()
             }
      else {
-         res.redirect('/dash')
+         res.redirect('/admin')
          }
         }
     
-    app.listen(port)
+
+
+
+app.get('/features', (req, res) => {
+	res.sendFile('features.html', {root: __dirname })
+});
+
+app.get('/terms', (req, res) => {
+	res.sendFile('terms.html', {root: __dirname })
+});
+
+app.get('/', (req, res) => {
+	res.sendFile('index.html', {root: __dirname })
+});
+    
+ app.get('/commandList', (req, res) => {
+	res.sendFile('command.html', {root: __dirname })
+     
+app.use(function(req, res) {
+    res.sendFile('oof.html', {root: __dirname });
+})
+     
+});
+
+        app.listen(port)
     console.log("dashboard ready in port: "+port)
     }

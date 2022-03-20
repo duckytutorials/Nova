@@ -1,4 +1,6 @@
-﻿const Aoijs = require("aoi.js");
+﻿const gradient = require('gradient-string');
+var figlet = require('figlet');
+const Aoijs = require("aoi.js");
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -6,11 +8,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.get('/', function(request, response) {
-	response.sendFile(__dirname + '/views/index.html');
+	response.sendFile(__dirname + '/Commands/Plugins/website/dashboard/index.html');
 });
-app.listen(1295, () => console.log(`PROPER FUNCTIONING`));
+app.listen(5000, () => console.log(`PROPER FUNCTIONING`));
 
 const Discord = require("discord.js");
+
+const msg = `Nova`;
+
+figlet(msg, (err, data) => {
+  console.log(gradient.pastel.multiline(data));
+});
 
 const bot = new Aoijs.Bot({
 
@@ -18,17 +26,18 @@ const bot = new Aoijs.Bot({
 sharding: true,
 shardAmount: 100,
     token: "", //paste your token here
-
-    prefix:['$getservervar[prefix]','$getglobaluservar[up]'], //change the prefix in line 270
+    prefix: ['$GetServerVar[prefix]','$getglobaluservar[up]'], //change the prefix in line 270
   mobile: false,
-suppressAll: true,
-errorMessage: "",
 fetchInvites: true,
 applicationCache: true,
-intents: "all"
+intents: "all",
 })
 
+<<<<<<< Updated upstream
 require('./Commands/Plugins/AdminPanel/dashboard.js')(bot, server port, './Commands/Plugins/', 'user', 'pass')
+=======
+ require('./Commands/Plugins/website/dashboard/index.js')(bot, 3000, './Commands/Plugins/', 'username', 'password')
+>>>>>>> Stashed changes
 
 
 const disbut = require('discord-buttons') 
@@ -539,7 +548,9 @@ Example:
 ban @user/ID optional reason]
   $onlyBotPerms[ban;I need \`Ban\` permission to do this]
   $onlyPerms[ban;you need \`Ban\` permission to do this]
-  $suppressErrors[user not found]`
+  $suppressErrors[user not found]
+  $sendDM[$sendDM[$findUser[$message[1]];{author:You have been banned from $serverName}{description:**Moderator:** $userTag[$authorID]
+**Reason:** $replaceText[$replaceText[$checkCondition[$messageSlice[1]==];true;A reason wasn't provided.];false;$messageSlice[1]]}`
 })
 bot.command({
   name: "kick",
@@ -732,7 +743,8 @@ code: `$author[$userTag[$authorID];$userAvatar[$authorID]]
   ✅ correct usage: clearwarnings @user/ID (number)]
   $suppressErrors[failed to clear the warnings]`
 })
- 
+
+
 
  
 bot.timeoutCommand({
