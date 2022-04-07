@@ -10,8 +10,8 @@
 
 > including:
 
-> Music, Leveling, Mod, Antiswear, utility, Ticket, Fun
+> Music, Leveling, Mod, Antiswear, utility, Ticket, Fun, nsfw
 
 
 It has special features such as
-a built in website and aa adminPanel
+a built in website and aa adminPanel and api!
