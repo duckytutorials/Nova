@@ -14,6 +14,8 @@ $description[<:moderation:905787390302490624>  \`\`\>help-mod\`\`\  _ _ _ _ _ _ 
 
 ⚙️  \`\`\>help-utility\`\`\
 
+:flushed: \`\`\>help-nsfw\`\`\
+
 <a:fun:910546867962642463>  \`\`\>help-fun\`\`\
 
 

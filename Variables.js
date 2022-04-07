@@ -696,4 +696,8 @@ module.exports = ({
  dimondpickaxe: "<:diamond_pickaxe:914023807839248405>",
  Hearts_left: "<:heart:914372501642051616>",
  antiSwear: "false",
+ key: "7122011",
+ maxexp: "100",
+welcome_channel: "",
+welcomer: "false",
  });

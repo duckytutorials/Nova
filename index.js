@@ -12,7 +12,12 @@ app.get('/', function(request, response) {
 });
 app.listen(5000, () => console.log(`PROPER FUNCTIONING`));
 
+
+
 const Discord = require("discord.js");
+
+const config = require("./config.json");
+
 
 const msg = `Nova`;
 
@@ -25,7 +30,7 @@ const bot = new Aoijs.Bot({
         connectedBots: true, 
 sharding: true,
 shardAmount: 100,
-    token: "", //paste your token here
+    token: config.token, //paste your token here
     prefix: ['$GetServerVar[prefix]','$getglobaluservar[up]'], //change the prefix in line 270
   mobile: false,
 fetchInvites: true,
@@ -33,12 +38,7 @@ applicationCache: true,
 intents: "all",
 })
 
-<<<<<<< Updated upstream
-require('./Commands/Plugins/AdminPanel/dashboard.js')(bot, server port, './Commands/Plugins/', 'user', 'pass')
-=======
- require('./Commands/Plugins/website/dashboard/index.js')(bot, 3000, './Commands/Plugins/', 'username', 'password')
->>>>>>> Stashed changes
-
+require('./Commands/Plugins/website/dashboard/index.js')(bot, 5004, './Commands/Plugins/', 'NovaPass', '7122011')
 
 const disbut = require('discord-buttons') 
 disbut(bot.client)
@@ -53,6 +53,7 @@ bot.variables(require('./Variables.js'))
 
 bot.loadCommands(`./Commands/Plugins`)
 
+bot.onJoined()
 bot.onMessage({
   guildOnly: false,
 
@@ -761,4 +762,10 @@ code: `$sendDM[$timeoutdata[userID];you have been unmuted in $serverName[$timeou
 $takeRole[$timeoutdata[userID];$getServerVar[mute;$timeoutdata[serverID]]]`
  
 })
+
+bot.JoinCommand = ({
+channel: "$getServerVar[welcome_channel]",
+code: `$channelsendmessage[$replacetext[$replacetext[$checkcondition[$getservervar[welcome_channel]==];true;$channelid];false;$getservervar[welcome_channel]];{title: Welcome to $serverName $username}{image:http://api2.nova-bot.tk/card?avatar=$replaceText[$userAvatar[$findmember[$message;yes]];webp;png]&middle=%20&bottom=%20&name=welcome%20to%20the%20server%20$username&text=#fffff&avatarborder=#5865F2&avatarbg=hex&background=https://cdn.nova-bot.tk/5ynk5an5.jpg}{color:#2f3136}`,
+})
+bot.onJoined();
 //nod end
